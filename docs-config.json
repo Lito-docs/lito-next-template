@@ -1,0 +1,147 @@
+{
+  "$schema": "./schema.json",
+  "metadata": {
+    "name": "Lito Docs",
+    "description": "Documentation powered by Lito - Open source Mintlify alternative",
+    "url": "https://docs.lito.dev",
+    "version": "1.0.0"
+  },
+  "branding": {
+    "logo": {
+      "light": "/logo.svg",
+      "dark": "/logo-dark.svg",
+      "href": "/"
+    },
+    "favicon": "/favicon.svg",
+    "colors": {
+      "primary": "#10B981"
+    }
+  },
+  "theme": {
+    "mode": "auto",
+    "defaultDark": false
+  },
+  "navigation": {
+    "navbar": {
+      "links": [
+        { "label": "Docs", "href": "/docs" },
+        { "label": "API", "href": "/docs/api" },
+        { "label": "Blog", "href": "/blog", "external": true }
+      ],
+      "cta": {
+        "label": "Get Started",
+        "href": "/docs",
+        "type": "button"
+      }
+    },
+    "sidebar": [
+      {
+        "label": "Getting Started",
+        "items": [
+          { "label": "Introduction", "href": "/docs", "icon": "lucide:book-open" },
+          { "label": "Installation", "href": "/docs/installation", "icon": "lucide:download" },
+          { "label": "Quick Start", "href": "/docs/quickstart", "icon": "lucide:rocket" }
+        ]
+      },
+      {
+        "label": "Guides",
+        "items": [
+          { "label": "Configuration", "href": "/docs/configuration", "icon": "lucide:settings" },
+          { "label": "Themes", "href": "/docs/themes", "icon": "lucide:palette" },
+          { "label": "Components", "href": "/docs/components", "icon": "lucide:component" }
+        ]
+      },
+      {
+        "label": "API Reference",
+        "items": [
+          { "label": "Overview", "href": "/docs/api" },
+          { "label": "Authentication", "href": "/docs/api/auth", "method": "POST" },
+          { "label": "Users", "href": "/docs/api/users", "method": "GET" }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "layout": "full",
+    "showBranding": true,
+    "showVersion": true,
+    "copyright": "© {year} Lito. All rights reserved.",
+    "socials": {
+      "github": "https://github.com/Lito-docs/lito",
+      "twitter": "https://twitter.com/litodocs",
+      "discord": "https://discord.gg/lito"
+    },
+    "links": [
+      {
+        "title": "Product",
+        "items": [
+          { "label": "Features", "href": "/features" },
+          { "label": "Pricing", "href": "/pricing" },
+          { "label": "Changelog", "href": "/changelog" }
+        ]
+      },
+      {
+        "title": "Resources",
+        "items": [
+          { "label": "Documentation", "href": "/docs" },
+          { "label": "API Reference", "href": "/docs/api" },
+          { "label": "Examples", "href": "/examples" }
+        ]
+      },
+      {
+        "title": "Company",
+        "items": [
+          { "label": "About", "href": "/about" },
+          { "label": "Blog", "href": "/blog" },
+          { "label": "Contact", "href": "/contact" }
+        ]
+      }
+    ],
+    "bottomLinks": [
+      { "label": "Privacy Policy", "href": "/privacy" },
+      { "label": "Terms of Service", "href": "/terms" }
+    ]
+  },
+  "search": {
+    "enabled": true,
+    "provider": "local",
+    "placeholder": "Search documentation..."
+  },
+  "seo": {
+    "ogImage": "/og-image.png",
+    "twitterHandle": "@litodocs",
+    "enableJsonLd": true,
+    "articleType": "TechArticle",
+    "autoCanonical": true,
+    "enableBreadcrumbs": true
+  },
+  "landing": {
+    "enabled": true,
+    "type": "default",
+    "hero": {
+      "title": "Beautiful docs made simple",
+      "subtitle": "Lito is an open-source Mintlify alternative for generating beautiful documentation sites from Markdown.",
+      "cta": [
+        { "label": "Get Started", "href": "/docs", "variant": "primary" },
+        { "label": "View on GitHub", "href": "https://github.com/Lito-docs/lito", "variant": "secondary" }
+      ]
+    },
+    "features": [
+      {
+        "title": "Beautiful by Default",
+        "description": "Professional design system with light and dark mode support out of the box.",
+        "icon": "lucide:palette"
+      },
+      {
+        "title": "MDX Components",
+        "description": "25+ pre-built components like alerts, cards, tabs, and code blocks.",
+        "icon": "lucide:component"
+      },
+      {
+        "title": "Full-Text Search",
+        "description": "Fast, client-side search powered by Pagefind for instant results.",
+        "icon": "lucide:search"
+      }
+    ]
+  }
+}
