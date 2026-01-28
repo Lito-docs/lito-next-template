@@ -1,26 +1,570 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Import theme variables */
+@import "./styles/theme.css";
 
+/* ============================================
+   Tailwind v4 Theme Configuration
+   ============================================ */
 @theme inline {
+  /* Core Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Primary Shades - Expose for Tailwind */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  --color-primary-950: var(--primary-950);
+
+  /* Gray Shades */
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-gray-950: var(--gray-950);
+
+  /* Semantic Colors */
+  --color-success: var(--success);
+  --color-success-light: var(--success-light);
+  --color-warning: var(--warning);
+  --color-warning-light: var(--warning-light);
+  --color-danger: var(--danger);
+  --color-danger-light: var(--danger-light);
+  --color-info: var(--info);
+  --color-info-light: var(--info-light);
+  --color-note: var(--note);
+  --color-note-light: var(--note-light);
+
+  /* Sidebar Colors */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  /* Border Radius */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+
+  /* Shadows */
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.025em;
+  --tracking-tight: -0.0125em;
+  --tracking-normal: var(--tracking-normal);
+  --tracking-wide: 0.0125em;
+  --tracking-wider: 0.025em;
+  --tracking-widest: 0.1em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================
+   Base Styles
+   ============================================ */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100dvw;
 }
 
 body {
-  background: var(--background);
+  @apply bg-background text-foreground;
+  font-family: var(--font-sans);
+  letter-spacing: var(--tracking-normal);
+  font-feature-settings: 'cv11' 1, 'ss01' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Custom Utilities
+   ============================================ */
+@utility rounded {
+  border-radius: var(--radius);
+}
+
+@utility not-prose {
+  --tw-prose-body: initial;
+  --tw-prose-headings: initial;
+  --tw-prose-links: initial;
+  --tw-prose-bold: initial;
+  --tw-prose-counters: initial;
+  --tw-prose-bullets: initial;
+  --tw-prose-hr: initial;
+  --tw-prose-quotes: initial;
+  --tw-prose-quote-borders: initial;
+  --tw-prose-captions: initial;
+  --tw-prose-code: initial;
+  --tw-prose-pre-code: initial;
+  --tw-prose-pre-bg: initial;
+  --tw-prose-th-borders: initial;
+  --tw-prose-td-borders: initial;
+}
+
+/* ============================================
+   Component Styles
+   ============================================ */
+
+/* Topbar - Fixed header with gradient */
+.topbar {
+  @apply fixed top-0 left-0 right-0 z-50;
+  background: linear-gradient(
+    to bottom,
+    oklch(from var(--background) l c h / 0.97),
+    oklch(from var(--background) l c h / 0.92)
+  );
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Layout container */
+.layout-container {
+  @apply flex;
+}
+
+/* Sidebar - Fixed left navigation */
+.sidebar {
+  @apply fixed left-0 top-16 h-[calc(100vh-4rem)] w-72 overflow-y-auto;
+  @apply hidden md:block;
+  background: var(--sidebar);
+  border-right: 1px solid var(--sidebar-border);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Sidebar navigation link */
+.sidebar-link {
+  @apply flex items-center gap-3 px-4 py-2.5 text-sm rounded-md;
+  @apply transition-all duration-150 ease-out;
+  color: var(--sidebar-foreground);
+  margin: 0.125rem 0.5rem;
+  position: relative;
+}
+
+.sidebar-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--sidebar-primary);
+  border-radius: 0 2px 2px 0;
+  transition: height 150ms ease;
+}
+
+.sidebar-link:hover {
+  background: var(--sidebar-accent);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  transform: translateX(2px);
+}
+
+.sidebar-link:hover::before {
+  height: 50%;
+}
+
+/* Active sidebar link */
+.sidebar-link-active {
+  @apply font-semibold;
+  background: linear-gradient(
+    90deg,
+    var(--primary-100),
+    var(--primary-50)
+  );
+  color: var(--primary-700);
+  box-shadow: var(--shadow-xs);
+}
+
+.sidebar-link-active::before {
+  height: 70%;
+}
+
+.dark .sidebar-link-active {
+  background: linear-gradient(
+    90deg,
+    var(--primary-200),
+    var(--primary-100)
+  );
+  color: var(--primary-800);
+}
+
+/* Search input */
+.search-input {
+  @apply w-full px-4 py-2.5 rounded-lg transition-all duration-200;
+  background-color: var(--input);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.search-input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* Main content area */
+.main-content {
+  @apply min-h-screen flex flex-col flex-1;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 18rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-content {
+    margin-right: 16rem;
+  }
+}
+
+/* Content wrapper */
+.content-wrapper {
+  @apply flex flex-1 gap-4 md:gap-8 max-w-full;
+  overflow-x: hidden;
+}
+
+/* Documentation prose styling */
+.docs-prose {
+  @apply prose lg:prose-lg max-w-none flex-1;
+  padding: 2rem 1.5rem;
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+/* Article header with breadcrumbs and copy button */
+.article-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .docs-prose {
+    padding: 3rem 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .docs-prose {
+    padding: 3.5rem 3rem;
+  }
+}
+
+.docs-prose img {
+  @apply rounded-lg border border-border shadow-sm my-8;
+}
+
+.docs-prose pre {
+  @apply rounded-lg border border-border shadow-sm overflow-x-auto;
+  max-width: 100%;
+}
+
+.docs-prose pre code {
+  @apply text-sm;
+  font-family: var(--font-mono);
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.docs-prose :not(pre)>code {
+  @apply rounded-md px-1.5 py-0.5 bg-muted border border-border text-foreground font-medium text-sm;
+  font-family: var(--font-mono);
+  word-break: break-word;
+}
+
+/* Links with animated underline */
+.docs-prose a:not(.no-underline) {
+  @apply text-primary-600 font-medium;
+  text-decoration: none;
+  position: relative;
+  background-image: linear-gradient(to right, var(--primary-500), var(--primary-500));
+  background-position: 0 100%;
+  background-size: 0 1.5px;
+  background-repeat: no-repeat;
+  transition: background-size 200ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms ease;
+}
+
+.docs-prose a:not(.no-underline):hover {
+  @apply text-primary-700;
+  background-size: 100% 1.5px;
+}
+
+.dark .docs-prose a:not(.no-underline) {
+  @apply text-primary-500;
+}
+
+.dark .docs-prose a:not(.no-underline):hover {
+  @apply text-primary-400;
+}
+
+/* Feature card with enhanced hover */
+.feature-card {
+  @apply relative overflow-hidden rounded-lg p-6 transition-all duration-200;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xs);
+}
+
+.feature-card:hover {
+  border-color: var(--primary-300);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.dark .feature-card:hover {
+  border-color: var(--primary-400);
+  box-shadow: var(--shadow-primary);
+}
+
+/* CTA Button with gradient */
+.cta-button {
+  @apply px-5 py-2.5 font-semibold rounded-lg;
+  @apply transition-all duration-150 ease-out;
+  background: linear-gradient(
+    135deg,
+    var(--primary-500),
+    var(--primary-600)
+  );
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(1 0 0 / 0.15),
+    transparent
+  );
+  transition: left 400ms ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md), 0 0 0 3px var(--primary-100);
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Glass effect utility */
+.glass-effect {
+  @apply backdrop-blur-lg;
+  background: oklch(from var(--background) l c h / 0.5);
+  border: 1px solid oklch(from var(--border) l c h / 0.5);
+}
+
+/* Sidebar group header */
+.sidebar-group-header {
+  @apply px-4 py-2 text-xs font-semibold uppercase;
+  color: var(--muted-foreground);
+  letter-spacing: 0.05em;
+  transition: color 150ms ease;
+}
+
+.sidebar-group-header:hover {
+  color: var(--foreground);
+}
+
+/* Table of Contents - Fixed right sidebar */
+.toc {
+  @apply fixed right-0 top-16 h-[calc(100vh-4rem)] w-64 py-6 px-4 overflow-y-auto;
+  @apply hidden lg:block;
+  background: var(--background);
+}
+
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
+   Focus States - Accessible
+   ============================================ */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--primary-500);
+  border-radius: var(--radius-sm);
+}
+
+button:focus-visible,
+a:focus-visible {
+  box-shadow: 0 0 0 3px var(--primary-100), 0 0 0 1px var(--primary-500);
+}
+
+/* ============================================
+   Prose Typography Customization
+   ============================================ */
+@utility prose {
+  --tw-prose-body: var(--muted-foreground);
+  --tw-prose-invert-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-links: var(--primary-600);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--muted-foreground);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--primary-300);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-pre-code: var(--foreground);
+  --tw-prose-pre-bg: var(--muted);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+}
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   RTL (Right-to-Left) Support
+   ============================================ */
+[dir="rtl"] {
+  /* Flip sidebar to right side */
+  .sidebar {
+    left: auto;
+    right: 0;
+    border-right: none;
+    border-left: 1px solid var(--sidebar-border);
+  }
+
+  .main-content {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @media (min-width: 768px) {
+    .main-content {
+      margin-left: 0;
+      margin-right: 18rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .main-content {
+      margin-left: 16rem;
+      margin-right: 18rem;
+    }
+  }
+
+  /* Flip TOC to left side */
+  .toc {
+    right: auto;
+    left: 0;
+  }
+
+  /* Flip sidebar link indicator */
+  .sidebar-link::before {
+    left: auto;
+    right: 0;
+    border-radius: 2px 0 0 2px;
+  }
+
+  .sidebar-link:hover {
+    transform: translateX(-2px);
+  }
+
+  /* Flip text alignment where needed */
+  .sidebar-link {
+    text-align: right;
+    flex-direction: row-reverse;
+  }
+
+  .sidebar-group-header {
+    text-align: right;
+  }
 }
