@@ -4,8 +4,15 @@ import { Sidebar, SidebarGroup } from "./Sidebar";
 import { Footer } from "./Footer";
 import { TableOfContents } from "./TableOfContents";
 import { Breadcrumbs } from "./Breadcrumbs";
+import { PrevNextNav } from "./PrevNextNav";
+import { CopyPageButton } from "./CopyPageButton";
+import { VersionBanner } from "./VersionBanner";
+import { EditPageLink } from "./EditPageLink";
+import { LastUpdated } from "./LastUpdated";
+import { PageFeedback } from "./PageFeedback";
 import { getConfig, getSidebar } from "@/lib/config";
 import { convertSidebar, replacePlaceholders } from "@/lib/utils/sidebar";
+import type { VersioningConfig } from "@/lib/utils/versioning";
 
 interface DocLayoutProps {
   children: ReactNode;
@@ -41,6 +48,13 @@ export function DocLayout({
   // Convert config sidebar to component format, or use provided sidebar
   const finalSidebar = sidebar || (configSidebar.length > 0 ? convertSidebar(configSidebar) : getDefaultSidebar());
 
+  // Extract config for client components
+  const versioningConfig = config.versioning as VersioningConfig | undefined;
+  const i18nConfig = config.i18n;
+  const editPageConfig = config.integrations?.editPage;
+  const feedbackConfig = config.integrations?.feedback;
+  const lastUpdatedConfig = config.integrations?.lastUpdated;
+
   // Get footer config
   const footerConfig = config.footer;
   const copyright = footerConfig?.copyright
@@ -54,6 +68,8 @@ export function DocLayout({
         logo={finalLogo}
         githubUrl={finalGithubUrl}
         discordUrl={footerConfig?.socials?.discord}
+        versioningConfig={versioningConfig}
+        i18nConfig={i18nConfig}
       />
 
       <div className="layout-container pt-16">
@@ -61,8 +77,18 @@ export function DocLayout({
 
         <main className="main-content">
           <article className="docs-prose">
-            {showBreadcrumbs && <Breadcrumbs />}
+            <div className="article-header">
+              {showBreadcrumbs && <Breadcrumbs />}
+              <CopyPageButton />
+            </div>
+            <VersionBanner versioningConfig={versioningConfig} />
             {children}
+            <div className="article-footer-meta">
+              <LastUpdated lastUpdatedConfig={lastUpdatedConfig} />
+              <EditPageLink editPageConfig={editPageConfig} />
+            </div>
+            <PageFeedback feedbackConfig={feedbackConfig} />
+            <PrevNextNav sidebarConfig={config.navigation?.sidebar} />
           </article>
         </main>
 

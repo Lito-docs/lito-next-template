@@ -105,9 +105,9 @@
   /* ----------------------------------------
      Typography
      ---------------------------------------- */
-  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: var(--font-geist-mono), 'Fira Code', 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace;
+  --font-mono: 'Fira Code', 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace;
 
   /* ----------------------------------------
      Border Radius
@@ -122,21 +122,21 @@
   --radius-full: 9999px;
 
   /* ----------------------------------------
-     Shadows - Light Mode (refined, multi-layered)
+     Shadows - Light Mode (subtle, professional)
      ---------------------------------------- */
-  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.03);
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
-  --shadow-md: 0 6px 16px -4px rgb(0 0 0 / 0.10), 0 2px 8px -4px rgb(0 0 0 / 0.06);
-  --shadow-lg: 0 12px 24px -8px rgb(0 0 0 / 0.12), 0 4px 12px -4px rgb(0 0 0 / 0.08);
-  --shadow-xl: 0 20px 40px -12px rgb(0 0 0 / 0.15), 0 8px 16px -8px rgb(0 0 0 / 0.10);
-  --shadow-2xl: 0 24px 48px -12px rgb(0 0 0 / 0.20);
+  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.02);
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow: 0 2px 4px -1px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 8px 16px -4px rgb(0 0 0 / 0.08), 0 4px 8px -4px rgb(0 0 0 / 0.04);
+  --shadow-xl: 0 16px 32px -8px rgb(0 0 0 / 0.10), 0 8px 16px -8px rgb(0 0 0 / 0.06);
+  --shadow-2xl: 0 24px 48px -12px rgb(0 0 0 / 0.12);
 
   /* Colored shadows for primary elements */
-  --shadow-primary-sm: 0 2px 8px -2px oklch(0.55 0.13 155 / 0.20);
-  --shadow-primary: 0 4px 16px -4px oklch(0.55 0.13 155 / 0.25);
-  --shadow-primary-lg: 0 12px 32px -8px oklch(0.55 0.13 155 / 0.30);
+  --shadow-primary-sm: 0 2px 8px -2px oklch(0.55 0.13 155 / 0.12);
+  --shadow-primary: 0 4px 12px -4px oklch(0.55 0.13 155 / 0.15);
+  --shadow-primary-lg: 0 8px 24px -8px oklch(0.55 0.13 155 / 0.20);
 
   /* ----------------------------------------
      Spacing & Layout
@@ -222,18 +222,18 @@
   --sidebar-border: var(--gray-300);
   --sidebar-ring: var(--primary-500);
 
-  /* Shadows - Dark Mode (more pronounced) */
-  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.20);
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.30);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.40), 0 1px 2px -1px rgb(0 0 0 / 0.40);
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.50), 0 2px 4px -2px rgb(0 0 0 / 0.40);
-  --shadow-md: 0 6px 16px -4px rgb(0 0 0 / 0.60), 0 2px 8px -4px rgb(0 0 0 / 0.50);
-  --shadow-lg: 0 12px 24px -8px rgb(0 0 0 / 0.70), 0 4px 12px -4px rgb(0 0 0 / 0.60);
-  --shadow-xl: 0 20px 40px -12px rgb(0 0 0 / 0.80), 0 8px 16px -8px rgb(0 0 0 / 0.70);
-  --shadow-2xl: 0 24px 48px -12px rgb(0 0 0 / 0.90);
+  /* Shadows - Dark Mode */
+  --shadow-2xs: 0 1px 2px 0 rgb(0 0 0 / 0.15);
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.20);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.25), 0 1px 2px -1px rgb(0 0 0 / 0.20);
+  --shadow: 0 2px 4px -1px rgb(0 0 0 / 0.30), 0 1px 2px -1px rgb(0 0 0 / 0.20);
+  --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.35), 0 2px 4px -2px rgb(0 0 0 / 0.25);
+  --shadow-lg: 0 8px 16px -4px rgb(0 0 0 / 0.40), 0 4px 8px -4px rgb(0 0 0 / 0.30);
+  --shadow-xl: 0 16px 32px -8px rgb(0 0 0 / 0.50), 0 8px 16px -8px rgb(0 0 0 / 0.35);
+  --shadow-2xl: 0 24px 48px -12px rgb(0 0 0 / 0.60);
 
   /* Primary shadows - Dark Mode */
-  --shadow-primary-sm: 0 2px 8px -2px oklch(0.65 0.13 155 / 0.30);
-  --shadow-primary: 0 4px 16px -4px oklch(0.65 0.13 155 / 0.40);
-  --shadow-primary-lg: 0 12px 32px -8px oklch(0.65 0.13 155 / 0.50);
+  --shadow-primary-sm: 0 2px 8px -2px oklch(0.65 0.13 155 / 0.15);
+  --shadow-primary: 0 4px 12px -4px oklch(0.65 0.13 155 / 0.20);
+  --shadow-primary-lg: 0 8px 24px -8px oklch(0.65 0.13 155 / 0.25);
 }

@@ -20,6 +20,12 @@ importers:
       '@next/mdx':
         specifier: ^16.0.0
         version: 16.1.4(@mdx-js/loader@3.1.1)(@mdx-js/react@3.1.1(@types/react@19.2.9)(react@19.2.3))
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.1.18
+      '@tailwindcss/typography':
+        specifier: ^0.5.16
+        version: 0.5.19(tailwindcss@4.1.18)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -50,13 +56,10 @@ importers:
       remark-gfm:
         specifier: ^4.0.0
         version: 4.0.1
-    devDependencies:
-      '@tailwindcss/postcss':
+      tailwindcss:
         specifier: ^4
         version: 4.1.18
-      '@tailwindcss/typography':
-        specifier: ^0.5.16
-        version: 0.5.19(tailwindcss@4.1.18)
+    devDependencies:
       '@types/mdx':
         specifier: ^2.0.13
         version: 2.0.13
@@ -75,9 +78,6 @@ importers:
       eslint-config-next:
         specifier: 16.1.4
         version: 16.1.4(@typescript-eslint/parser@8.53.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      tailwindcss:
-        specifier: ^4
-        version: 4.1.18
       typescript:
         specifier: ^5
         version: 5.9.3

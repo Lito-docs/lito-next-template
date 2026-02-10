@@ -29,7 +29,7 @@ export function contentDirExists(): boolean {
 /**
  * Get a document by its slug
  */
-export function getDocBySlug(slug: string[]): { content: string; frontmatter: Record<string, unknown> } | null {
+export function getDocBySlug(slug: string[]): { content: string; frontmatter: Record<string, unknown>; lastModified: string } | null {
   const slugPath = slug.length > 0 ? slug.join("/") : "index";
 
   // Try different file extensions and patterns
@@ -44,7 +44,9 @@ export function getDocBySlug(slug: string[]): { content: string; frontmatter: Re
     if (fs.existsSync(filePath)) {
       const fileContent = fs.readFileSync(filePath, "utf-8");
       const { content, data: frontmatter } = matter(fileContent);
-      return { content, frontmatter };
+      const stat = fs.statSync(filePath);
+      const lastModified = stat.mtime.toISOString();
+      return { content, frontmatter, lastModified };
     }
   }
 

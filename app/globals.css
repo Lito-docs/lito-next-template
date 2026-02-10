@@ -156,18 +156,13 @@ body {
    Component Styles
    ============================================ */
 
-/* Topbar - Fixed header with gradient */
+/* Topbar - Fixed header */
 .topbar {
   @apply fixed top-0 left-0 right-0 z-50;
-  background: linear-gradient(
-    to bottom,
-    oklch(from var(--background) l c h / 0.97),
-    oklch(from var(--background) l c h / 0.92)
-  );
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: oklch(from var(--background) l c h / 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
 }
 
 /* Layout container */
@@ -181,64 +176,31 @@ body {
   @apply hidden md:block;
   background: var(--sidebar);
   border-right: 1px solid var(--sidebar-border);
-  box-shadow: var(--shadow-xs);
 }
 
 /* Sidebar navigation link */
 .sidebar-link {
-  @apply flex items-center gap-3 px-4 py-2.5 text-sm rounded-md;
-  @apply transition-all duration-150 ease-out;
+  @apply flex items-center gap-3 px-3 py-1.5 text-sm rounded-md;
+  @apply transition-colors duration-150;
   color: var(--sidebar-foreground);
-  margin: 0.125rem 0.5rem;
-  position: relative;
-}
-
-.sidebar-link::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 0;
-  background: var(--sidebar-primary);
-  border-radius: 0 2px 2px 0;
-  transition: height 150ms ease;
+  margin: 1px 0.5rem;
 }
 
 .sidebar-link:hover {
   background: var(--sidebar-accent);
   color: var(--foreground);
-  transform: translateX(2px);
-}
-
-.sidebar-link:hover::before {
-  height: 50%;
 }
 
 /* Active sidebar link */
 .sidebar-link-active {
-  @apply font-semibold;
-  background: linear-gradient(
-    90deg,
-    var(--primary-100),
-    var(--primary-50)
-  );
-  color: var(--primary-700);
-  box-shadow: var(--shadow-xs);
-}
-
-.sidebar-link-active::before {
-  height: 70%;
+  @apply font-medium;
+  color: var(--primary-600);
+  background: var(--primary-50);
 }
 
 .dark .sidebar-link-active {
-  background: linear-gradient(
-    90deg,
-    var(--primary-200),
-    var(--primary-100)
-  );
-  color: var(--primary-800);
+  color: var(--primary-400);
+  background: var(--primary-50);
 }
 
 /* Search input */
@@ -252,7 +214,6 @@ body {
 .search-input:focus {
   outline: none;
   border-color: var(--primary-400);
-  box-shadow: 0 0 0 3px var(--primary-100);
 }
 
 .search-input::placeholder {
@@ -301,6 +262,24 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* Article footer meta with last updated and edit link */
+.article-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .article-footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 @media (min-width: 768px) {
   .docs-prose {
     padding: 3rem 2.5rem;
@@ -314,11 +293,11 @@ body {
 }
 
 .docs-prose img {
-  @apply rounded-lg border border-border shadow-sm my-8;
+  @apply rounded-lg border border-border my-8;
 }
 
 .docs-prose pre {
-  @apply rounded-lg border border-border shadow-sm overflow-x-auto;
+  @apply rounded-lg border border-border overflow-x-auto;
   max-width: 100%;
 }
 
@@ -335,93 +314,61 @@ body {
   word-break: break-word;
 }
 
-/* Links with animated underline */
+/* Links with simple underline */
 .docs-prose a:not(.no-underline) {
   @apply text-primary-600 font-medium;
-  text-decoration: none;
-  position: relative;
-  background-image: linear-gradient(to right, var(--primary-500), var(--primary-500));
-  background-position: 0 100%;
-  background-size: 0 1.5px;
-  background-repeat: no-repeat;
-  transition: background-size 200ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms ease;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--primary-300);
+  transition: color 150ms ease, text-decoration-color 150ms ease;
 }
 
 .docs-prose a:not(.no-underline):hover {
   @apply text-primary-700;
-  background-size: 100% 1.5px;
+  text-decoration-color: var(--primary-500);
 }
 
 .dark .docs-prose a:not(.no-underline) {
-  @apply text-primary-500;
+  @apply text-primary-400;
+  text-decoration-color: var(--primary-300);
 }
 
 .dark .docs-prose a:not(.no-underline):hover {
-  @apply text-primary-400;
+  @apply text-primary-300;
+  text-decoration-color: var(--primary-400);
 }
 
-/* Feature card with enhanced hover */
+/* Feature card */
 .feature-card {
-  @apply relative overflow-hidden rounded-lg p-6 transition-all duration-200;
+  @apply relative overflow-hidden rounded-lg p-6;
+  @apply transition-colors duration-150;
   background-color: var(--card);
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-xs);
 }
 
 .feature-card:hover {
   border-color: var(--primary-300);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  background: var(--accent);
 }
 
 .dark .feature-card:hover {
   border-color: var(--primary-400);
-  box-shadow: var(--shadow-primary);
 }
 
-/* CTA Button with gradient */
+/* CTA Button */
 .cta-button {
-  @apply px-5 py-2.5 font-semibold rounded-lg;
-  @apply transition-all duration-150 ease-out;
-  background: linear-gradient(
-    135deg,
-    var(--primary-500),
-    var(--primary-600)
-  );
+  @apply px-4 py-2 font-medium rounded-lg text-sm;
+  @apply transition-colors duration-150;
+  background: var(--primary-500);
   color: var(--primary-foreground);
-  box-shadow: var(--shadow-sm);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    oklch(1 0 0 / 0.15),
-    transparent
-  );
-  transition: left 400ms ease;
 }
 
 .cta-button:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md), 0 0 0 3px var(--primary-100);
-}
-
-.cta-button:hover::before {
-  left: 100%;
+  background: var(--primary-600);
 }
 
 .cta-button:active {
-  transform: translateY(0);
-  box-shadow: var(--shadow-xs);
+  background: var(--primary-700);
 }
 
 /* Glass effect utility */
@@ -464,14 +411,9 @@ body {
    Focus States - Accessible
    ============================================ */
 *:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--primary-500);
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
   border-radius: var(--radius-sm);
-}
-
-button:focus-visible,
-a:focus-visible {
-  box-shadow: 0 0 0 3px var(--primary-100), 0 0 0 1px var(--primary-500);
 }
 
 /* ============================================
@@ -545,17 +487,6 @@ a:focus-visible {
   .toc {
     right: auto;
     left: 0;
-  }
-
-  /* Flip sidebar link indicator */
-  .sidebar-link::before {
-    left: auto;
-    right: 0;
-    border-radius: 2px 0 0 2px;
-  }
-
-  .sidebar-link:hover {
-    transform: translateX(-2px);
   }
 
   /* Flip text alignment where needed */

@@ -19,6 +19,7 @@ export interface DocsConfig {
   i18n?: I18nConfig;
   landing?: LandingConfig;
   integrations?: IntegrationsConfig;
+  versioning?: VersioningConfig;
 }
 
 export interface MetadataConfig {
@@ -192,7 +193,49 @@ export interface IntegrationsConfig {
     provider: "google" | "plausible" | "fathom";
     measurementId: string;
   } | null;
-  feedback?: {
-    enabled: boolean;
+  feedback?: FeedbackConfig;
+  editPage?: EditPageConfig;
+  lastUpdated?: LastUpdatedConfig;
+  copyPage?: CopyPageConfig;
+}
+
+export interface EditPageConfig {
+  enabled?: boolean;
+  pattern?: string;
+}
+
+export interface LastUpdatedConfig {
+  enabled?: boolean;
+  format?: "long" | "short" | "relative";
+}
+
+export interface FeedbackConfig {
+  enabled?: boolean;
+  webhookUrl?: string;
+}
+
+export interface CopyPageConfig {
+  enabled?: boolean;
+  position?: "bottom-right" | "bottom-left" | "top-right" | "top-left";
+  aiProviders?: Array<{
+    name: string;
+    label: string;
+    icon: string;
+  }>;
+  contextPrompt?: string;
+}
+
+export interface VersioningConfig {
+  enabled?: boolean;
+  defaultVersion?: string;
+  versions?: Array<{
+    id: string;
+    label: string;
+    path: string;
+    deprecated?: boolean;
+  }>;
+  versionBanner?: {
+    enabled?: boolean;
+    message?: string;
   };
 }

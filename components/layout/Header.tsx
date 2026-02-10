@@ -4,6 +4,10 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { ThemeToggle } from "./ThemeToggle";
 import { SearchButton } from "./SearchButton";
+import { VersionSwitcher } from "./VersionSwitcher";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import type { VersioningConfig } from "@/lib/utils/versioning";
+import type { I18nConfig } from "@/lib/types/config";
 
 interface HeaderProps {
   siteName?: string;
@@ -11,6 +15,8 @@ interface HeaderProps {
   githubUrl?: string;
   discordUrl?: string;
   onSearchClick?: () => void;
+  versioningConfig?: VersioningConfig;
+  i18nConfig?: I18nConfig;
 }
 
 export function Header({
@@ -19,6 +25,8 @@ export function Header({
   githubUrl,
   discordUrl,
   onSearchClick,
+  versioningConfig,
+  i18nConfig,
 }: HeaderProps) {
   return (
     <header className="topbar h-16">
@@ -73,6 +81,8 @@ export function Header({
             </a>
           )}
 
+          <VersionSwitcher versioningConfig={versioningConfig} />
+          <LanguageSwitcher i18nConfig={i18nConfig} />
           <ThemeToggle />
 
           {/* Mobile menu button */}
